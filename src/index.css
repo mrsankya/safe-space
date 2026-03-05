@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Funky Theme Colors */
+  --color-funky-primary: #FF00FF;
+  --color-funky-bg: #1A1A2E;
+  --color-funky-secondary: #00FFFF;
+  --color-funky-accent: #FFFF00;
+  --color-funky-text: #FFFFFF;
+
+  /* Peaceful Theme Colors */
+  --color-peaceful-primary: #2F7F73;
+  --color-peaceful-bg: #F5F9F8;
+  --color-peaceful-secondary: #7ED1B2;
+  --color-peaceful-accent: #8FAADC;
+  --color-peaceful-text: #2D3748;
+
+  /* Theme Colors mapped to variables */
+  --color-theme-primary: var(--theme-primary);
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-secondary: var(--theme-secondary);
+  --color-theme-accent: var(--theme-accent);
+  --color-theme-text: var(--theme-text);
+}
+
+:root {
+  --theme-primary: var(--color-peaceful-primary);
+  --theme-bg: var(--color-peaceful-bg);
+  --theme-secondary: var(--color-peaceful-secondary);
+  --theme-accent: var(--color-peaceful-accent);
+  --theme-text: var(--color-peaceful-text);
+}
+
+[data-theme='funky'] {
+  --theme-primary: var(--color-funky-primary);
+  --theme-bg: var(--color-funky-bg);
+  --theme-secondary: var(--color-funky-secondary);
+  --theme-accent: var(--color-funky-accent);
+  --theme-text: var(--color-funky-text);
+}
+
+@layer base {
+  body {
+    @apply bg-theme-bg text-theme-text font-sans antialiased min-h-screen tracking-wide leading-relaxed;
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-sans font-semibold tracking-tight text-theme-primary;
+  }
+}
+
+.glass-tile {
+  @apply bg-white/10 backdrop-blur-2xl rounded-[40px] transition-all duration-700 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:bg-white/20;
+}
+
+.glass-sidebar {
+  @apply bg-white/5 backdrop-blur-3xl border-r border-theme-primary/10;
+}
+
+.btn-secondary {
+  @apply bg-theme-secondary/20 text-theme-primary px-6 py-3 rounded-full font-medium transition-all duration-700 hover:bg-theme-secondary/30 active:scale-95;
+}
+
+.neon-glow-theme {
+  @apply shadow-[0_0_20px_rgba(var(--color-theme-primary),0.2)];
+}
+
+.btn-glass {
+  @apply bg-white/20 backdrop-blur-md text-theme-text px-6 py-3 rounded-full font-medium transition-all duration-700 hover:bg-white/40 hover:text-theme-primary active:scale-95 disabled:opacity-30;
+}
+
+.btn-neon {
+  @apply bg-theme-primary text-white px-6 py-3 rounded-full font-bold transition-all duration-700 hover:shadow-[0_10px_25px_rgba(var(--color-theme-primary),0.3)] active:scale-95;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
